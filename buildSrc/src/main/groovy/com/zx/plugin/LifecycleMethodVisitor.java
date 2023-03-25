@@ -8,7 +8,6 @@ import org.objectweb.asm.commons.AdviceAdapter;
 
 /**
  * @author 周旭
- * @company 伊柯夫
  * @e-mail 374952705@qq.com
  * @time 2019/12/16
  * @descripe
@@ -39,19 +38,25 @@ public class LifecycleMethodVisitor extends MethodVisitor {
 
 
 
-    //方法执行前插入
+//   insert on method exe before
     @Override
     public void visitCode() {
         super.visitCode();
         System.out.println("MethodVisitor visitCode------");
-
+        /**
+         * 仿Log.e通过ASMPlugin出来的字节码指令:   Log.e("TAG", "MainActivity------->onCreate()");
+         *     LDC "TAG"
+         *     LDC "MainActivity------->onCreate()"
+         *     INVOKESTATIC android/util/Log.e (Ljava/lang/String;Ljava/lang/String;)I
+         *     POP
+         */
         mv.visitLdcInsn("TAG");
         mv.visitLdcInsn(className + "------->" + methodName);
         mv.visitMethodInsn(Opcodes.INVOKESTATIC, "android/util/Log", "e", "(Ljava/lang/String;Ljava/lang/String;)I", false);
         mv.visitInsn(Opcodes.POP);
     }
 
-    //方法执行后插入
+//    insert on  method exe after
     @Override
     public void visitInsn(int opcode) {
 //        if (opcode==Opcodes.RETURN){

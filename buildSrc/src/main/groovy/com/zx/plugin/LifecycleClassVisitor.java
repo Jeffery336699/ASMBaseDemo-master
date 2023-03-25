@@ -18,8 +18,8 @@ public class LifecycleClassVisitor extends ClassVisitor {
 
     public LifecycleClassVisitor(ClassVisitor cv) {
         /**
-         * 参数1：ASM API版本，源码规定只能为4，5，6
-         * 参数2：ClassVisitor不能为 null
+         * 参数1：ASM API版本，def:456
+         * 参数2：classVisitor不能为null
          */
         super(Opcodes.ASM6, cv);
     }

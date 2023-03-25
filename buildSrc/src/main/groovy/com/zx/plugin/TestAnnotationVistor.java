@@ -6,7 +6,6 @@ import org.objectweb.asm.Type;
 
 /**
  * @author 周旭
- * @company 伊柯夫
  * @e-mail 374952705@qq.com
  * @time 2019/12/16
  * @descripe
